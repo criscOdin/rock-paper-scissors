@@ -36,17 +36,32 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  score = [0, 0, 0];
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt('your choice?');
-    let computerSelection = computerPlay();
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult);
-    console.log(
-      `computer = ${score[0]}, player = ${score[1]}, ties = ${score[2]}`
-    );
+function game(playerSelection) {
+  //score = [0, 0, 0];
+  //for (let i = 0; i < 5; i++) {
+  //let playerSelection = prompt('your choice?');
+  let computerSelection = computerPlay();
+  let roundResult = playRound(playerSelection, computerSelection);
+  round.innerText = `${roundResult}`;
+  total.innerText = `computer = ${score[0]}, player = ${score[1]}, ties = ${score[2]}`;
+  if (score[0] === 5) {
+    end.innerText = 'Computer WINS';
+  } else if (score[1] === 5) {
+    end.innerText = 'You WIN';
   }
+  //console.log(`${roundResult} computer = ${score[0]}, player = ${score[1]}, ties = ${score[2]}`);
+  //}
 }
 
-game();
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const round = document.querySelector('.round');
+const total = document.querySelector('.total');
+const end = document.querySelector('.end');
+
+rock.addEventListener('click', () => game('rock'));
+paper.addEventListener('click', () => game('paper'));
+scissors.addEventListener('click', () => game('scissors'));
+
+//game();
