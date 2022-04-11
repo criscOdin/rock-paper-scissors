@@ -24,6 +24,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  //TODO: what happen if the player doesn't write anything?
   let player = hands.indexOf(playerSelection.toLowerCase());
   if (player !== -1) {
     let computer = hands.indexOf(computerSelection.toLowerCase());
